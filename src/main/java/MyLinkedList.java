@@ -72,26 +72,14 @@ public class MyLinkedList {
     }
     private boolean removeFirst(Node node) {
         node.next.previous = node.previous;
-        //node.previous.next = node.next;
+
         size--;
         return true;
     }
     private boolean removeLast(Node node) {
-        //node.next.previous = node.previous;
+
         node.previous.next = node.next;
         size--;
         return true;
     }
-    /*public boolean remove(int index) {
-        Node ele =  get(index);
-        Node prev = (Node) get(index-1);
-        Node nex = (Node) get(index+1);
-        prev.next=ele.next;
-        nex.previous=ele.previous;
-        size--;
-        *//*if (index < 0 || index >= size) {
-            throw new IllegalArgumentException();
-        }*//*
-        return false;
-    }*/
 }
