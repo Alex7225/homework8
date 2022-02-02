@@ -34,18 +34,20 @@ public class MyStack {
 
         }
         nElem = 0;
+        rear=-1;
     }
 
     public int size() {
         return nElem;
     }
     public Object peek (){
-        return stack[size()-1];
+        return stack[rear];
     }
     public Object pop(){
         Object temp = peek();
-        stack[size()-1]=null;
+        stack[rear]=null;
         nElem--;
+        rear--;
         return temp;
     }
 }

@@ -1,5 +1,3 @@
-import java.util.Queue;
-
 public class MyQueue {
     private Object[] queue;
     private int maxSize;
@@ -25,6 +23,7 @@ public class MyQueue {
         for (int i=0; i<index; i++) {
             queue[i] = null;
             nElem--;
+            front++;
         }
     }
     public void clear() {
@@ -37,13 +36,13 @@ public class MyQueue {
         return nElem;
     }
     public Object peek (){
-        return queue[0];
+        return queue[front];
     }
     public Object poll(){
-        Object temp = queue[0];
-        queue[0]=null;
+        Object temp = queue[front];
+        queue[front]=null;
         nElem--;
+        front++;
         return temp;
     }
-
 }

@@ -1,29 +1,32 @@
 public class MyArrayList {
 
-    int size= 5;
-    private Object[] someArray = new Object[size];
+    int size = 0;
+    protected Object[] someArray = new Object[20];
 
-    private void add(Object someObject) {
-
+    protected void add(Object someObject) {
         someArray[size] = someObject;
         size++;
     }
 
-    private void remove(int index) {
+    protected void remove(int index) {
 
         someArray[index] = null;
+        size--;
     }
 
-    private void clear() {
-        for (int i = 0; i < someArray.length; i++)
+    protected void clear() {
+        int count = size;
+        for (int i = 0; i < count; i++) {
             someArray[i] = null;
+            size--;
+        }
     }
 
-    private int size() {
+    protected int size() {
         return size;
     }
 
-    private Object get(int index) {
+    protected Object get(int index) {
         return someArray[index];
     }
 }

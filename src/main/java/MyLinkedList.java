@@ -3,7 +3,7 @@ public class MyLinkedList {
     private Node last;
     private int size;
 
-    private static class Node {
+    protected static class Node {
         Object element;
         Node next;
         Node previous;
@@ -39,6 +39,11 @@ public class MyLinkedList {
     }
 
     public Object get(int index) {
+        Node result = getNode(index);
+        return result.element;
+    }
+
+    private Node getNode(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
@@ -46,14 +51,47 @@ public class MyLinkedList {
         for (int i = 0; i < index; i++) {
             result = result.next;
         }
-
-        return result.element;
+        return result;
     }
 
     public boolean remove(int index) {
-        if (index < 0 || index >= size) {
-            throw new IllegalArgumentException();
+        Node elementForDelete = getNode(index);
+        if (index==0){
+            return removeFirst(elementForDelete);
+        } else if (index==size-1){
+            return removeLast(elementForDelete);
         }
-        return false;
+        else return remove(elementForDelete);
     }
+
+    private boolean remove(Node node) {
+        node.next.previous = node.previous;
+        node.previous.next = node.next;
+        size--;
+        return true;
+    }
+    private boolean removeFirst(Node node) {
+        node.next.previous = node.previous;
+        //node.previous.next = node.next;
+        size--;
+        return true;
+    }
+    private boolean removeLast(Node node) {
+        //node.next.previous = node.previous;
+        node.previous.next = node.next;
+        size--;
+        return true;
+    }
+    /*public boolean remove(int index) {
+        Node ele =  get(index);
+        Node prev = (Node) get(index-1);
+        Node nex = (Node) get(index+1);
+        prev.next=ele.next;
+        nex.previous=ele.previous;
+        size--;
+        *//*if (index < 0 || index >= size) {
+            throw new IllegalArgumentException();
+        }*//*
+        return false;
+    }*/
 }
