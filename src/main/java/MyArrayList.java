@@ -1,9 +1,14 @@
-public class MyArrayList {
+public class MyArrayList <T>{
 
     int size = 0;
-    protected Object[] someArray = new Object[20];
+    protected T[] someArray;
+    private T t;
 
-    protected void add(Object someObject) {
+    public MyArrayList(){
+        someArray = (T[]) new Object[20];
+    }
+
+    protected void add(T someObject) {
         someArray[size] = someObject;
         size++;
     }
@@ -26,7 +31,8 @@ public class MyArrayList {
         return size;
     }
 
-    protected Object get(int index) {
-        return someArray[index];
+    protected T get(int index) {
+        Object someObject = someArray[index];
+        return (T)someObject;
     }
 }

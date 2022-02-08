@@ -1,6 +1,6 @@
 package MyHashMap;
 
-public class MyHashMap {
+public class MyHashMap <T, S>{
     Node[] table;
     int size;
 
@@ -12,7 +12,7 @@ public class MyHashMap {
         return v & (length - 1);
     }
 
-    public void put(Object key, Object value) {
+    public void put(T key, T value) {
         Node newNode = new Node();
         newNode.hash = myHash(key.hashCode(), table.length);
         newNode.value = value;
@@ -31,7 +31,6 @@ public class MyHashMap {
 
                 if (temp.key != null && temp.key.equals(key)) {
                     keyRepeat = true;
-                    System.out.println("ключ дублирован");
                     temp.value = value;
                     break;
                 } else {
@@ -53,10 +52,10 @@ public class MyHashMap {
         return size;
     }
 
-    public Object get(Object key) {
+    public T get(T key) {
 
         int hash = myHash(key.hashCode(), table.length);
-        Object value = null;
+        T value = null;
         if (table[hash] == null) {
             return null;
 
@@ -65,7 +64,7 @@ public class MyHashMap {
             while (temp != null) {
                 if (temp.key.equals(key)) {
 
-                    value = temp.value;
+                    value = (T) temp.value;
                     break;
                 } else {
                     temp = temp.next;
@@ -76,7 +75,7 @@ public class MyHashMap {
 
     }
 
-    public void remove(Object key) {
+    public void remove(T key) {
         int hash = myHash(key.hashCode(), table.length);
         Node temp = table[hash];
         if (temp.key.equals(key)) {

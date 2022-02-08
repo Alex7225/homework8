@@ -1,5 +1,5 @@
-public class MyStack {
-    private Object[] stack;
+public class MyStack <T> {
+    private T[] stack;
     private int maxSize;
     private int nElem;
     private int front;
@@ -7,13 +7,13 @@ public class MyStack {
 
     public MyStack(int maxSize) {
         this.maxSize = maxSize;
-        stack = new Object[maxSize];
+        stack = (T[]) new Object[maxSize];
         rear = -1;
         front = 0;
         nElem = 0;
     }
 
-    public void push(Object value) {
+    public void push(T value) {
         if (rear == maxSize - 1) {
             rear = -1;
         }
@@ -40,11 +40,11 @@ public class MyStack {
     public int size() {
         return nElem;
     }
-    public Object peek (){
+    public T peek (){
         return stack[rear];
     }
-    public Object pop(){
-        Object temp = peek();
+    public T pop(){
+        T temp = peek();
         stack[rear]=null;
         nElem--;
         rear--;

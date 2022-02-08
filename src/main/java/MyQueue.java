@@ -1,18 +1,20 @@
-public class MyQueue {
-    private Object[] queue;
+public class MyQueue <T> {
+    private T[] queue;
     private int maxSize;
     private int nElem;
     private int front;
     private int rear;
+    private T t;
+
 
     public MyQueue(int maxSize) {
         this.maxSize = maxSize;
-        queue = new Object[maxSize];
+        queue = (T[]) new Object[maxSize];
         rear = -1;
         front = 0;
         nElem = 0;
     }
-    public void add(Object value) {
+    public void add(T value) {
         if (rear == maxSize - 1) {
             rear = -1;
         }
@@ -35,11 +37,11 @@ public class MyQueue {
     public int size() {
         return nElem;
     }
-    public Object peek (){
+    public T peek (){
         return queue[front];
     }
-    public Object poll(){
-        Object temp = queue[front];
+    public T poll(){
+        T temp = queue[front];
         queue[front]=null;
         nElem--;
         front++;

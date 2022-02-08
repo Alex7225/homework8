@@ -1,14 +1,14 @@
-public class MyLinkedList {
+public class MyLinkedList <T>{
     private Node first;
     private Node last;
     private int size;
-
-    protected static class Node {
-        Object element;
+    private T t;
+    protected class Node {
+        T element;
         Node next;
         Node previous;
 
-        public Node(Object element) {
+        public Node(T element) {
             this.element = element;
         }
     }
@@ -17,7 +17,7 @@ public class MyLinkedList {
         return size;
     }
 
-    public void add(Object element) {
+    public void add(T element) {
         Node newNode = new Node(element);
         if (first == null) {
             newNode.next = null;
@@ -38,7 +38,7 @@ public class MyLinkedList {
         size = 0;
     }
 
-    public Object get(int index) {
+    public T get(int index) {
         Node result = getNode(index);
         return result.element;
     }
