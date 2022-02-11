@@ -3,12 +3,14 @@ public class MyArrayList <T>{
     int size = 0;
     protected T[] someArray;
     private T t;
+    private int sizeArr =16;
 
     public MyArrayList(){
-        someArray = (T[]) new Object[20];
+        someArray = (T[]) new Object[sizeArr];
     }
 
     protected void add(T someObject) {
+        if (size==sizeArr-1) sizeArr=sizeArr*2;
         someArray[size] = someObject;
         size++;
     }
@@ -16,7 +18,7 @@ public class MyArrayList <T>{
     protected void remove(int index) {
 
         someArray[index] = null;
-        size--;
+        if (size>0) size--;
     }
 
     protected void clear() {
@@ -32,7 +34,10 @@ public class MyArrayList <T>{
     }
 
     protected T get(int index) {
-        Object someObject = someArray[index];
-        return (T)someObject;
+        T someObject = someArray[index];
+        if (someObject==null) {
+            throw new ArrayIndexOutOfBoundsException("With index "+index+" No Element in Array!");
+        }
+        return someObject;
     }
 }

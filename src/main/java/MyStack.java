@@ -5,7 +5,7 @@ public class MyStack <T> {
     private int front;
     private int rear;
 
-    public MyStack(int maxSize) {
+    public void setMaxSize(int maxSize) {
         this.maxSize = maxSize;
         stack = (T[]) new Object[maxSize];
         rear = -1;

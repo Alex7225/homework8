@@ -6,14 +6,14 @@ public class MyQueue <T> {
     private int rear;
     private T t;
 
-
-    public MyQueue(int maxSize) {
+    public void setMaxSize(int maxSize) {
         this.maxSize = maxSize;
         queue = (T[]) new Object[maxSize];
         rear = -1;
         front = 0;
         nElem = 0;
     }
+
     public void add(T value) {
         if (rear == maxSize - 1) {
             rear = -1;
@@ -38,13 +38,13 @@ public class MyQueue <T> {
         return nElem;
     }
     public T peek (){
-        return queue[front];
+        return queue[rear];
     }
     public T poll(){
-        T temp = queue[front];
-        queue[front]=null;
+        T temp = queue[rear];
+        queue[rear]=null;
         nElem--;
-        front++;
+        rear--;
         return temp;
     }
 }
