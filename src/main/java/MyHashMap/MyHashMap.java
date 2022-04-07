@@ -39,7 +39,6 @@ public class MyHashMap <T, S>{
                     temp = temp.next;
 
                 }
-
             }
             if (keyRepeat == false) {
                 iterLast.next = newNode;
